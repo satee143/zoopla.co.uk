@@ -1,0 +1,15 @@
+class homepage:
+
+    def __init__(self,driver):
+        self.driver=driver
+        self.location_textbox_xpath='//span[@class="search-input-location-placeholder-1 "]'
+        self.search_button_id='search-submit'
+
+
+
+    def Select_location(self):
+        self.driver.find_element_by_xpath(self.location_textbox_xpath).clear()
+        self.driver.find_element_by_xpath(self.location_textbox_xpath).send_keys('london')
+
+    def Click_On_Submit_button(self):
+        self.driver.find_element_by_id(self.search_button_id).click()

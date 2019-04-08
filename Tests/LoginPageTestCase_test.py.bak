@@ -1,0 +1,15 @@
+import pytest
+from Pages.Homepage import homepage
+
+
+@pytest.mark.usefixtures('Setup')
+class TestLogin():
+
+    def test_login(self):
+        driver=self.driver
+        Search=homepage(driver)
+        driver.get('https://www.zoopla.co.uk/')
+        Search.Select_location('london')
+        Search.Click_On_Submit_button()
+
+
