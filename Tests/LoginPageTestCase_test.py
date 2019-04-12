@@ -16,8 +16,11 @@ class TestLogin():
         Search.Click_On_Submit_button()
         Search.Retrive_No_Of_Rows()
         Search.Listout()
+        Search.Sorting_List()
+        Search.Selecting_Property()
         Search.Property_Name_Retrive()
         Search.Click_On_Seller()
+        Search.Check_The_Product()
 
 
 

@@ -14,48 +14,46 @@ class homepage:
 
 
 
+
     def Select_location(self,location):
-        #self.driver.find_element_by_xpath(self.location_textbox_xpath).clear()
+        self.driver.find_element_by_id(self.location_textbox_id).clear()
         self.driver.find_element_by_id(self.location_textbox_id).send_keys(location)
 
     def Click_On_Submit_button(self):
         self.driver.find_element_by_id(self.search_button_id).click()
 
     def Retrive_No_Of_Rows(self):
-        val=(self.driver.find_elements_by_xpath(self.retriv_data_xpath))
-        val1=len(val)
+        Properties=len(self.driver.find_elements_by_xpath(self.retriv_data_xpath))
+        print(Properties)
 
-        print(val1)
 
     def Listout(self):
         list=self.driver.find_elements_by_xpath(self.prop_value_xpath)
-        l=[]
-        l1=[]
+        self.l=[]
         for lists in list:
             l0=lists.text
-            l2 = l0.replace(',', '')
+            self.l.append(l0)
+        print('Price List As Per Displayed on the Page')
+        print(self.l)
+
+
+    def Sorting_List(self):
+        l1=[]
+        for m in self.l:
+            l2 = m.replace(',', '')
             l3 = l2.split()
-            l1.append(l3[0][1:])
-
-        lis=[]
-        print(l)
-        print(l1)
-        for m in l1:
-            lis.append(int(m))
+            l1.append(int(l3[0][1:]))
+        #print(l1)
         print("Price Of the Property  in Descending Order:")
-        ls1=sorted(lis,reverse=True)
-        for m in ls1:
-            print(m)
-        #print('Asscending Order:',sorted(lis))
-        list[6].click()
-        # l1=l.sort()
-        # print(l1)
+        print(sorted(l1,reverse=True))
 
-
+    def Selecting_Property(self):
+        list = self.driver.find_elements_by_xpath(self.prop_value_xpath)
+        list[7].click()
 
     def Property_Name_Retrive(self):
-        property=self.driver.find_element_by_xpath(self.property_name_xpath).text
-        print(property)
+        self.property=self.driver.find_element_by_xpath(self.property_name_xpath).text
+        print(self.property)
 
     def Click_On_Seller(self):
         seller=self.driver.find_element_by_xpath(self.owner_name_xpath)
@@ -65,7 +63,7 @@ class homepage:
 
     def Check_The_Product(self):
         product_name=self.driver.find_element_by_tag_name('html').text
-        if property in product_name:
+        if self.property in product_name:
             print("Match Sucesfful")
         else:
             print('Match Not Sucessfull')
