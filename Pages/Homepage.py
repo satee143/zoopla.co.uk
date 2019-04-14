@@ -46,7 +46,7 @@ class homepage:
             l2 = m.replace(',', '')
             l3 = l2.split()
             l1.append(int(l3[0][1:]))
-        #print(l1)
+
         print("Price Of the Property  in Descending Order:")
         print(sorted(l1,reverse=True))
 
