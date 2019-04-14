@@ -8,6 +8,7 @@ class homepage:
         self.location_textbox_id='search-input-location'
         self.search_button_id='search-submit'
         self.retriv_data_xpath='//li[@class="srp clearfix   "]'
+        self.property_link_xpath='(//li[@id]/div/div[2]/h2/a)[6]'
         self.prop_value_xpath='//li[@id]//a[@class="listing-results-price text-price"]'
         self.property_name_xpath='//*[@class="ui-property-summary__title ui-title-subgroup"]'
         self.owner_name_xpath='//h4[@class="ui-agent__name"]'
@@ -51,8 +52,8 @@ class homepage:
         print(sorted(l1,reverse=True))
 
     def Selecting_Property(self):
-        list = self.driver.find_elements_by_xpath(self.prop_value_xpath)
-        list[8].click()
+        link = self.driver.find_elements_by_xpath(self.property_link_xpath)
+        link.click()
 
     def Property_Name_Retrive(self):
         self.property=self.driver.find_element_by_xpath(self.property_name_xpath).text
