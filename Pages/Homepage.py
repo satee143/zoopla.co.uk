@@ -52,7 +52,7 @@ class homepage:
         print(sorted(l1,reverse=True))
 
     def Selecting_Property(self):
-        link = self.driver.find_elements_by_xpath(self.property_link_xpath)
+        link = self.driver.find_element_by_xpath(self.property_link_xpath)
         link.click()
 
     def Property_Name_Retrive(self):
