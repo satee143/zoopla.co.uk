@@ -32,7 +32,10 @@ class homepage:
         self.l=[]
         for lists in list:
             l0=lists.text
-            self.l.append(l0)
+            if l0.isalpha()==False:
+                self.l.append(l0)
+            else:
+                print('The Price is not in Numeric')
         print('Price List As Per Displayed on the Page')
         print(self.l)
 

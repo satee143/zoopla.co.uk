@@ -1,6 +1,12 @@
 from selenium import webdriver
 import pytest
 import time
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.microsoft import EdgeDriverManager
+from webdriver_manager.microsoft import IEDriverManager
+
+from webdriver_manager.firefox import GeckoDriverManager
+
 
 def pytest_addoption(parser):
      parser.addoption('--browser',action='store',default='chrome')
@@ -9,13 +15,20 @@ def pytest_addoption(parser):
 def Setup(request):
      browser=request.config.getoption('--browser')
      if browser=='chrome':
-          driver=webdriver.Chrome(executable_path='../Drivers/chromedriver.exe')
+          driver=webdriver.Chrome(ChromeDriverManager().install())
      elif browser=='firefox':
-          driver=webdriver.Firefox(executable_path='C:/Users/Dusa/PycharmProjects/zoopla.co.uk/Drivers/geckodriver.exe')
+          driver=webdriver.Firefox(executable_path=GeckoDriverManager().install())
+     elif browser== 'edge':
+          driver=webdriver.Edge(EdgeDriverManager().install())
+     elif browser=='ie' or 'internet explorer':
+          browser=webdriver.Ie(IEDriverManager().install())
+
+
      request.cls.driver=driver
      driver.maximize_window()
      driver.implicitly_wait(2)
      yield
      driver.close()
      driver.quit()
+
 	
