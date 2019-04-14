@@ -2,10 +2,10 @@ from selenium import webdriver
 import pytest
 import time
 from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.microsoft import EdgeDriverManager
 from webdriver_manager.microsoft import IEDriverManager
 
-from webdriver_manager.firefox import GeckoDriverManager
 
 
 def pytest_addoption(parser):
@@ -19,7 +19,7 @@ def Setup(request):
      elif browser=='firefox':
           driver=webdriver.Firefox(executable_path=GeckoDriverManager().install())
      elif browser== 'edge':
-          driver=webdriver.Edge(executable_path=EdgeDriverManager().install())
+          driver=webdriver.Edge(EdgeDriverManager().install())
      elif browser=='ie' or 'internet explorer':
           driver=webdriver.Ie(executable_path=IEDriverManager().install())
 

@@ -52,7 +52,7 @@ class homepage:
 
     def Selecting_Property(self):
         list = self.driver.find_elements_by_xpath(self.prop_value_xpath)
-        list[6].click()
+        list[8].click()
 
     def Property_Name_Retrive(self):
         self.property=self.driver.find_element_by_xpath(self.property_name_xpath).text
