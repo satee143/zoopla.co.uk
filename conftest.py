@@ -19,9 +19,9 @@ def Setup(request):
      elif browser=='firefox':
           driver=webdriver.Firefox(executable_path=GeckoDriverManager().install())
      elif browser== 'edge':
-          driver=webdriver.Edge(EdgeDriverManager().install())
+          driver=webdriver.Edge(executable_path=EdgeDriverManager().install())
      elif browser=='ie' or 'internet explorer':
-          browser=webdriver.Ie(IEDriverManager().install())
+          driver=webdriver.Ie(executable_path=IEDriverManager().install())
 
 
      request.cls.driver=driver
